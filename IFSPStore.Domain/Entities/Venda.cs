@@ -1,4 +1,5 @@
 ﻿using IFSPStore.Domain.Base;
+using System.Text.Json.Serialization;
 
 namespace IFSPStore.Domain.Entities
 {
@@ -43,7 +44,7 @@ namespace IFSPStore.Domain.Entities
             ValorUnitario = valorUnitario;
             ValorTotal = valorTotal;
         }
-
+        [JsonIgnore]
         public Venda? Venda { get; set; }
         public Produto? Produto { get; set; }
         public int? Quantidade { get; set; }
