@@ -12,17 +12,17 @@ namespace IFSPStore.Service.Validators
                 .NotNull().WithMessage("Por favor informe o nome.")
                 .Length(50).WithMessage("Nome pode ser de no máximo 50 caracteres.");
 
-            RuleFor(c => c.Endereco[])
+            RuleFor(c => c.Endereco)
                 .NotEmpty().WithMessage("Por favor informe o endereço.")
                 .NotNull().WithMessage("Por favor informe o endereço.")
                 .Length(100).WithMessage("Endereço pode ser de no máximo 100 caracteres.");
 
-            RuleFor(c => c.Documento[])
+            RuleFor(c => c.Documento)
                 .NotEmpty().WithMessage("Por favor informe o documento.")
                 .NotNull().WithMessage("Por favor informe o documento.")
                 .Length(100).WithMessage("Documento pode ser de no máximo 50 caracteres.");
 
-            RuleFor(c => c.Bairro[])
+            RuleFor(c => c.Bairro)
                 .NotEmpty().WithMessage("Por favor informe o bairro.")
                 .NotNull().WithMessage("Por favor informe o bairro.")
                 .Length(75).WithMessage("Bairro pode ser de no máximo 75 caracteres.");
