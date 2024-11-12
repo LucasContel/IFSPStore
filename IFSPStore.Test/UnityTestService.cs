@@ -38,9 +38,28 @@ namespace IFSPStore.Test
 
             services.AddScoped<IBaseRepository<Usuario>, BaseRepository<Usuario>>();
             services.AddScoped<IBaseService<Usuario>, BaseService<Usuario>>();
+            services.AddScoped<IBaseRepository<Cidade>, BaseRepository<Cidade>>();
+            services.AddScoped<IBaseService<Cidade>, BaseService<Cidade>>();
+            services.AddScoped<IBaseRepository<Cliente>, BaseRepository<Cliente>>();
+            services.AddScoped<IBaseService<Cliente>, BaseService<Cliente>>();
+            services.AddScoped<IBaseRepository<Grupo>, BaseRepository<Grupo>>();
+            services.AddScoped<IBaseService<Grupo>, BaseService<Grupo>>();
+            services.AddScoped<IBaseRepository<Produto>, BaseRepository<Produto>>();
+            services.AddScoped<IBaseService<Produto>, BaseService<Produto>>();
+            services.AddScoped<IBaseRepository<VendaItem>, BaseRepository<VendaItem>>();
+            services.AddScoped<IBaseService<VendaItem>, BaseService<VendaItem>>();
+            services.AddScoped<IBaseRepository<Venda>, BaseRepository<Venda>>();
+            services.AddScoped<IBaseService<Venda>, BaseService<Venda>>();
+
             services.AddSingleton(new MapperConfiguration(config =>
                 {
                     config.CreateMap<Usuario, Usuario>();
+                    config.CreateMap<Cidade, Cidade>();
+                    config.CreateMap<Cliente, Cliente>();
+                    config.CreateMap<Grupo, Grupo>();
+                    config.CreateMap<Produto, Produto>();
+                    config.CreateMap<VendaItem, VendaItem>();
+                    config.CreateMap<Venda, Venda>();
                 }).CreateMapper());
 
             return services.BuildServiceProvider();
@@ -75,7 +94,34 @@ namespace IFSPStore.Test
             var result = UsuarioService.Get<Usuario>();
 
             Console.Write(JsonSerializer.Serialize(result));
+        }
 
+        [TestMethod]
+        public void TestCidade()
+        {
+            var sp = ConfigureServices();
+
+            var cidadeService = sp.GetService<IBaseService<Cidade>>();
+            var cidade = new Cidade
+            {
+                Nome = "Birigui",
+                Estado = "SP"
+            };
+
+            var result = cidadeService.Add<Cidade, Cidade, CidadeValidator>(cidade);
+
+            Console.Write(JsonSerializer.Serialize(result));
+        }
+
+        [TestMethod]
+        public void TestSelectCidade()
+        {
+            var sp = ConfigureServices();
+            var CidadeService = sp.GetService<IBaseService<Cidade>>();
+
+            var result = CidadeService.Get<Cidade>();
+
+            Console.Write(JsonSerializer.Serialize(result));
         }
     }
 }
