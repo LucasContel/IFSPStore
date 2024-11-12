@@ -8,6 +8,7 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
+
             builder.ToTable("Produto");
 
             builder.HasKey(prop => prop.Id);
@@ -27,7 +28,8 @@ namespace IFSPStore.Repository.Mapping
 
             builder.HasOne(prop => prop.Grupo)
                 .WithMany()
-                .HasConstraintName("nome_chave_estrangeira");
+                .HasConstraintName("chave_estrangeira");
+
         }
     }
 }

@@ -10,6 +10,11 @@ namespace IFSPStore.Repository.Repository
 
         protected readonly MySqlContext _mySqlContext;
 
+        public BaseRepository(MySqlContext mySqlContext)
+        {
+            _mySqlContext = mySqlContext;
+        }
+
         public void AttachObject(object obj)
         {
             _mySqlContext.Attach(obj);
