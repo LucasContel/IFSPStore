@@ -27,13 +27,8 @@ namespace IFSPStore.Service.Validators
             RuleFor(c => c.UnidadeVenda)
                 .NotEmpty().WithMessage("Por favor informe a unidade de venda.")
                 .NotNull().WithMessage("Por favor informe a unidade de venda.")
-                .MaximumLength(50).WithMessage("Unidade de venda pode ser de no máximo 50 caracteres.");
+                .MaximumLength(10).WithMessage("Unidade de venda pode ser de no máximo 10 caracteres.");
 
-            RuleFor(c => c.Nome)
-                .EmailAddress().WithMessage("")
-                .NotEmpty().WithMessage("Por favor informe o nome.")
-                .NotNull().WithMessage("Por favor informe o nome.")
-                .MaximumLength(50).WithMessage("Nome pode ser de no máximo 50 caracteres.");
         }
     }
 }

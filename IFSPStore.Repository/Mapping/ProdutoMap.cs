@@ -28,7 +28,7 @@ namespace IFSPStore.Repository.Mapping
 
             builder.HasOne(prop => prop.Grupo)
                 .WithMany()
-                .HasConstraintName("chave_estrangeira");
+                .HasConstraintName("FK_Grupo");
 
         }
     }

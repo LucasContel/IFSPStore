@@ -22,7 +22,7 @@ namespace IFSPStore.Repository.Mapping
                 .HasMaxLength(255);
             builder.HasOne(prop => prop.Cidade)
                 .WithMany()
-                .HasConstraintName("nome_chave_estrangeira");
+                .HasConstraintName("FK_Cidade");
         }
     }
 }

@@ -8,6 +8,7 @@ using IFSPStore.Service.Services;
 using IFSPStore.Service.Validators;
 using AutoMapper;
 using System.Text.Json;
+using static IFSPStore.Test.UnitTestRepository;
 
 namespace IFSPStore.Test
 {
@@ -40,26 +41,33 @@ namespace IFSPStore.Test
             services.AddScoped<IBaseService<Usuario>, BaseService<Usuario>>();
             services.AddScoped<IBaseRepository<Cidade>, BaseRepository<Cidade>>();
             services.AddScoped<IBaseService<Cidade>, BaseService<Cidade>>();
+
             services.AddScoped<IBaseRepository<Cliente>, BaseRepository<Cliente>>();
             services.AddScoped<IBaseService<Cliente>, BaseService<Cliente>>();
+
             services.AddScoped<IBaseRepository<Grupo>, BaseRepository<Grupo>>();
             services.AddScoped<IBaseService<Grupo>, BaseService<Grupo>>();
+
             services.AddScoped<IBaseRepository<Produto>, BaseRepository<Produto>>();
             services.AddScoped<IBaseService<Produto>, BaseService<Produto>>();
+
             services.AddScoped<IBaseRepository<VendaItem>, BaseRepository<VendaItem>>();
             services.AddScoped<IBaseService<VendaItem>, BaseService<VendaItem>>();
+
             services.AddScoped<IBaseRepository<Venda>, BaseRepository<Venda>>();
             services.AddScoped<IBaseService<Venda>, BaseService<Venda>>();
 
             services.AddSingleton(new MapperConfiguration(config =>
                 {
-                    config.CreateMap<Usuario, Usuario>();
-                    config.CreateMap<Cidade, Cidade>();
-                    config.CreateMap<Cliente, Cliente>();
-                    config.CreateMap<Grupo, Grupo>();
-                    config.CreateMap<Produto, Produto>();
-                    config.CreateMap<VendaItem, VendaItem>();
-                    config.CreateMap<Venda, Venda>();
+                    
+                    //config.CreateMap<Usuario, Usuario>();
+                    //config.CreateMap<Cidade, Cidade>();
+                    //config.CreateMap<Cliente, Cliente>();
+                    //config.CreateMap<Grupo, Grupo>();
+                    //config.CreateMap<Produto, Produto>();
+                    //config.CreateMap<VendaItem, VendaItem>();
+                    //config.CreateMap<Venda, Venda>();
+                    
                 }).CreateMapper());
 
             return services.BuildServiceProvider();
@@ -101,14 +109,14 @@ namespace IFSPStore.Test
         {
             var sp = ConfigureServices();
 
-            var cidadeService = sp.GetService<IBaseService<Cidade>>();
+            var CidadeService = sp.GetService<IBaseService<Cidade>>();
             var cidade = new Cidade
             {
                 Nome = "Birigui",
                 Estado = "SP"
             };
 
-            var result = cidadeService.Add<Cidade, Cidade, CidadeValidator>(cidade);
+            var result = CidadeService.Add<Cidade, Cidade, CidadeValidator>(cidade);
 
             Console.Write(JsonSerializer.Serialize(result));
         }
@@ -117,11 +125,197 @@ namespace IFSPStore.Test
         public void TestSelectCidade()
         {
             var sp = ConfigureServices();
+
             var CidadeService = sp.GetService<IBaseService<Cidade>>();
 
             var result = CidadeService.Get<Cidade>();
 
             Console.Write(JsonSerializer.Serialize(result));
         }
+
+        [TestMethod]
+        public void TestCliente()
+        {
+            var sp = ConfigureServices();
+
+            var CidadeService = sp.GetService<IBaseService<Cidade>>();
+
+            var ClienteService = sp.GetService<IBaseService<Cliente>>();
+
+            var cidade = CidadeService?.Get<Cidade>().FirstOrDefault(c => c.Id == 1);
+
+            var cliente = new Cliente
+            {
+                Nome = "Nome Teste Cliente",
+                Endereco = "Endereco Teste Cliente",
+                Documento = "Documento Teste Cliente",
+                Bairro = "Bairro Teste Cliente",
+                Cidade = cidade
+            };
+
+            var result = ClienteService.Add<Cliente, Cliente, ClienteValidator>(cliente);
+
+            Console.Write(JsonSerializer.Serialize(result));
+            
+        }
+
+        [TestMethod]
+        public void TestSelectCliente()
+        {
+            var sp = ConfigureServices();
+            var ClienteService = sp.GetService<IBaseService<Cliente>>();
+
+            var result = ClienteService.Get<Cliente>();
+
+            Console.Write(JsonSerializer.Serialize(result));
+        }
+
+        [TestMethod]
+        public void TestGrupo()
+        {
+            var sp = ConfigureServices();
+
+            var GrupoService = sp.GetService<IBaseService<Grupo>>();
+            var grupo = new Grupo
+            {
+                Nome = "Eletronicos",
+            };
+
+            var result = GrupoService.Add<Grupo, Grupo, GrupoValidator>(grupo);
+
+            Console.Write(JsonSerializer.Serialize(result));
+        }
+
+        [TestMethod]
+        public void TestSelectGrupo()
+        {
+            var sp = ConfigureServices();
+
+            var GrupoService = sp.GetService<IBaseService<Grupo>>();
+
+            var result = GrupoService.Get<Grupo>();
+
+            Console.Write(JsonSerializer.Serialize(result));
+        }
+
+        [TestMethod]
+        public void TestProduto()
+        {
+            var sp = ConfigureServices();
+
+            var ProdutoService = sp.GetService<IBaseService<Produto>>();
+
+            var GrupoService = sp.GetService<IBaseService<Grupo>>();
+
+            var grupo = GrupoService?.Get<Grupo>().FirstOrDefault(c => c.Id == 1);
+
+
+            var produto = new Produto
+            {
+                Nome = "Teste Produto",
+                Preco = 22.99f,
+                Quantidade = 6,
+                DataCompra = DateTime.Now,
+                UnidadeVenda = "UND",
+                Grupo = grupo
+            };
+
+            var result = ProdutoService.Add<Produto, Produto, ProdutoValidator>(produto);
+
+            Console.Write(JsonSerializer.Serialize(result));
+
+        }
+
+        [TestMethod]
+        public void TestSelectProduto()
+        {
+            var sp = ConfigureServices();
+            var ProdutoService = sp.GetService<IBaseService<Produto>>();
+
+            var result = ProdutoService.Get<Produto>();
+
+            Console.Write(JsonSerializer.Serialize(result));
+        }
+
+
+        [TestMethod]
+        public void TestVenda()
+        {
+            var sp = ConfigureServices();
+
+            var ClienteService = sp.GetService<IBaseService<Cliente>>();
+
+            var UsuarioService = sp.GetService<IBaseService<Usuario>>();
+
+            var ProdutoService = sp.GetService<IBaseService<Produto>>();
+
+            var VendaService = sp.GetService<IBaseService<Venda>>();
+
+            var VendaItemService = sp.GetService<IBaseService<VendaItem>>();
+
+            var cliente = ClienteService?.Get<Cliente>().FirstOrDefault(c => c.Id == 1);
+
+            var usuario = UsuarioService?.Get<Usuario>().FirstOrDefault(c => c.Id == 1);
+
+            var produto = ProdutoService?.Get<Produto>().FirstOrDefault(c => c.Id == 1);
+
+            var venda = new Venda
+            {
+                Data = DateTime.Now,
+                ValorTotal = 99f,
+                Usuario = usuario,
+                Cliente = cliente,
+                Itens = new List<VendaItem>()
+            };
+
+            var vendaItem = new VendaItem
+            {
+                Quantidade = 1,
+                ValorUnitario = produto.Preco,
+                ValorTotal = produto.Preco * 1,
+                Venda = venda,
+                Produto = produto
+            };
+
+            venda.Itens.Add(vendaItem);
+
+            sp.GetService<MySqlContext>().Entry(venda).State = EntityState.Added;
+            var resultVenda = VendaService.Add<Venda, Venda, VendaValidator>(venda);
+
+            var resultItem = VendaItemService.Add<VendaItem, VendaItem, VendaItemValidator>(vendaItem);
+            
+
+
+            Console.Write(JsonSerializer.Serialize(resultVenda));
+
+            
+
+            Console.Write(JsonSerializer.Serialize(resultItem));
+
+        }
+
+        [TestMethod]
+        public void TestSelectVendaItem()
+        {
+            var sp = ConfigureServices();
+
+            var VendaItemService = sp.GetService<IBaseService<VendaItem>>();
+
+            var result = VendaItemService.Get<VendaItem>();
+
+            Console.Write(JsonSerializer.Serialize(result));
+        }
+
+        [TestMethod]
+        public void TestSelectVenda()
+        {
+            var sp = ConfigureServices();
+            var VendaService = sp.GetService<IBaseService<Venda>>();
+
+            var result = VendaService.Get<Venda>();
+
+            Console.Write(JsonSerializer.Serialize(result));
+        }
+
     }
 }

@@ -8,12 +8,11 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<Grupo> builder)
         {
-            builder.ToTable("Something");
+            builder.ToTable("Grupo");
 
             builder.HasKey(prop => prop.Id);
 
             builder.Property(prop => prop.Nome)
-                .HasColumnName("SomethingElse")
                 .IsRequired()
                 .HasMaxLength(50);
                 //.HasColumnType("varchar(50)");
