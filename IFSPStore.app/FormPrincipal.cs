@@ -1,5 +1,6 @@
 using IFSPStore.app.Cadastros;
 using IFSPStore.app.Infra;
+using Microsoft.Extensions.DependencyInjection;
 using ReaLTaiizor.Forms;
 
 namespace IFSPStore.app

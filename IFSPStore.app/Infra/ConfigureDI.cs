@@ -4,6 +4,7 @@ using IFSPStore.Domain.Base;
 using IFSPStore.Domain.Entities;
 using IFSPStore.Repository.Context;
 using IFSPStore.Repository.Repository;
+using IFSPStore.Service.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -44,12 +45,12 @@ namespace IFSPStore.app.Infra
             #endregion
 
             #region Serviços
-            Services.AddScoped<IBaseService<Usuario>, IBaseService<Usuario>>();
-            Services.AddScoped<IBaseService<Cidade>, IBaseService<Cidade>>();
-            Services.AddScoped<IBaseService<Cliente>, IBaseService<Cliente>>();
-            Services.AddScoped<IBaseService<Grupo>, IBaseService<Grupo>>();
-            Services.AddScoped<IBaseService<Produto>, IBaseService<Produto>>();
-            Services.AddScoped<IBaseService<Venda>, IBaseService<Venda>>();
+            Services.AddScoped<IBaseService<Usuario>, BaseService<Usuario>>();
+            Services.AddScoped<IBaseService<Cidade>, BaseService<Cidade>>();
+            Services.AddScoped<IBaseService<Cliente>, BaseService<Cliente>>();
+            Services.AddScoped<IBaseService<Grupo>, BaseService<Grupo>>();
+            Services.AddScoped<IBaseService<Produto>, BaseService<Produto>>();
+            Services.AddScoped<IBaseService<Venda>, BaseService<Venda>>();
             #endregion
 
             #region Formulários
