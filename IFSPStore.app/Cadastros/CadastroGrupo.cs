@@ -46,6 +46,7 @@ namespace IFSPStore.app.Base
                     PreencheObjeto(grupo);
                     grupo = _grupoService.Add<Grupo, Grupo, GrupoValidator>(grupo);
                 }
+                tabControlCadastro.SelectedIndex = 1;
             }
             catch (Exception ex)
             {

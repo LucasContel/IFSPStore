@@ -48,6 +48,7 @@ namespace IFSPStore.app.Cadastros
                     PreencheObjeto(cidade);
                     _cidadeService.Add<Cidade, Cidade, CidadeValidator>(cidade);
                 }
+                tabControlCadastro.SelectedIndex = 1;
             }
             catch (Exception ex)
             {

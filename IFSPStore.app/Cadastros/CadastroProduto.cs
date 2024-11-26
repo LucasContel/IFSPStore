@@ -51,6 +51,7 @@ namespace IFSPStore.app.Base
                     PreencheObjeto(produto);
                     _produtoService.Add<Produto, Produto, ProdutoValidator>(produto);
                 }
+                tabControlCadastro.SelectedIndex = 1;
             }
             catch (Exception ex)
             {

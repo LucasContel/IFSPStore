@@ -52,6 +52,7 @@ namespace IFSPStore.app.Base
                     PreencheObjeto(cliente);
                     _clienteService.Add<Cliente, Cliente, ClienteValidator>(cliente);
                 }
+                tabControlCadastro.SelectedIndex = 1;
             }
             catch (Exception ex)
             {

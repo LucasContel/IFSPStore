@@ -52,7 +52,7 @@ namespace IFSPStore.app.Base
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if(dataGridViewConsulta.SelectedRows.Count > 0)
+            if (dataGridViewConsulta.SelectedRows.Count > 0)
             {
                 if (MessageBox.Show(@"Deseja realmente excluir?", @"IFSP Store", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -65,10 +65,12 @@ namespace IFSPStore.app.Base
             {
                 MessageBox.Show(@"Selecione algum registro!", @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
-                
         }
+        private void tabPageConsulta_Enter(object sender, EventArgs e)
+        {
+            CarregaGrid();
+        }
+
         #endregion
 
         #region eventos_CRUD
@@ -107,7 +109,7 @@ namespace IFSPStore.app.Base
 
         protected virtual void Editar()
         {
-            if(dataGridViewConsulta.SelectedRows.Count > 0)
+            if (dataGridViewConsulta.SelectedRows.Count > 0)
             {
                 isAlteracao = true;
                 var linha = dataGridViewConsulta.SelectedRows[0];
@@ -135,6 +137,8 @@ namespace IFSPStore.app.Base
 
 
 
-        
+
+
+
     }
 }

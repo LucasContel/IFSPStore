@@ -53,6 +53,8 @@ namespace IFSPStore.app.Base
                     PreencheObjeto(usuario);
                     _usuarioService.Add<Usuario, Usuario, UsuarioValidator>(usuario);
                 }
+
+                tabControlCadastro.SelectedIndex = 1;
             }
             catch (Exception ex)
             {
