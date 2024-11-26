@@ -1,3 +1,4 @@
+using IFSPStore.app.Base;
 using IFSPStore.app.Cadastros;
 using IFSPStore.app.Infra;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,11 @@ namespace IFSPStore.app
         private void cidadesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ExibeFormulario<CadastroCidade>();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExibeFormulario<CadastroCliente>();
         }
 
         private void ExibeFormulario<TFormulario>() where TFormulario : Form

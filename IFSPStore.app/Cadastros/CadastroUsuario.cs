@@ -7,20 +7,15 @@ namespace IFSPStore.app.Base
 {
     public partial class CadastroUsuario : CadastroBase
     {
-        #region Declarações
         private readonly IBaseService<Usuario> _usuarioService;
         private List<Usuario>? usuarios;
-        #endregion
 
-        #region Construtor
         public CadastroUsuario(IBaseService<Usuario> usuarioService)
         {
             _usuarioService = usuarioService;
             InitializeComponent();
         }
-        #endregion
 
-        #region Método
         private void PreencheObjeto(Usuario usuario)
         {
             usuario.Nome = txtNome.Text;
@@ -31,9 +26,7 @@ namespace IFSPStore.app.Base
             usuario.DataLogin = DateTime.Parse(txtDataLogin.Text);
             usuario.Ativo = ckbxAtivo.Checked;
         }
-        #endregion
 
-        #region Eventos CRUD
         protected override void Salvar()
         {
             try
@@ -78,7 +71,7 @@ namespace IFSPStore.app.Base
         {
             usuarios = _usuarioService.Get<Usuario>().ToList();
             dataGridViewConsulta.DataSource = usuarios;
-            dataGridViewConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         protected override void CarregaRegistro(DataGridViewRow? linha)
@@ -101,6 +94,5 @@ namespace IFSPStore.app.Base
             }
         }
 
-        #endregion
     }
 }

@@ -6,27 +6,21 @@ namespace IFSPStore.app.Base
 {
     public partial class CadastroGrupo : CadastroBase
     {
-        #region Declarações
+        
         private readonly IBaseService<Grupo> _grupoService;
         private List<Grupo> grupos;
-        #endregion
-
-        #region Construtor
+        
         public CadastroGrupo(IBaseService<Grupo> grupoService)
         {
             _grupoService = grupoService;
             InitializeComponent();
         }
-        #endregion
-
-        #region Métodos
+        
         private void PreencheObjeto(Grupo grupo)
         {
             grupo.Nome = txtNome.Text;
         }
-        #endregion
-
-        #region Eventos CRUD
+        
         protected override void Salvar()
         {
             try
@@ -70,7 +64,7 @@ namespace IFSPStore.app.Base
         {
             grupos = _grupoService.Get<Grupo>().ToList();
             dataGridViewConsulta.DataSource = grupos;
-            dataGridViewConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
         }
 
@@ -79,6 +73,6 @@ namespace IFSPStore.app.Base
             txtId.Text = linha?.Cells["Id"].Value.ToString();
             txtNome.Text = linha?.Cells["Nome"].Value.ToString();
         }
-        #endregion
+        
     }
 }

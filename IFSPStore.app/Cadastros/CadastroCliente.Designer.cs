@@ -33,27 +33,39 @@
             txtEndereco = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             txtId = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             txtNome = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            txtDocumento = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             tabControlCadastro.SuspendLayout();
             tabPageCadastro.SuspendLayout();
             SuspendLayout();
             // 
             // tabControlCadastro
             // 
-            tabControlCadastro.Size = new Size(794, 400);
+            tabControlCadastro.Location = new Point(3, 85);
+            tabControlCadastro.Margin = new Padding(3, 4, 3, 4);
+            tabControlCadastro.Size = new Size(908, 455);
             // 
             // tabPageCadastro
             // 
+            tabPageCadastro.Controls.Add(txtDocumento);
             tabPageCadastro.Controls.Add(cboCidade);
             tabPageCadastro.Controls.Add(txtBairro);
             tabPageCadastro.Controls.Add(txtEndereco);
             tabPageCadastro.Controls.Add(txtId);
             tabPageCadastro.Controls.Add(txtNome);
-            tabPageCadastro.Size = new Size(786, 365);
+            tabPageCadastro.Margin = new Padding(3, 4, 3, 4);
+            tabPageCadastro.Padding = new Padding(3, 4, 3, 4);
+            tabPageCadastro.Size = new Size(900, 420);
             tabPageCadastro.Controls.SetChildIndex(txtNome, 0);
             tabPageCadastro.Controls.SetChildIndex(txtId, 0);
             tabPageCadastro.Controls.SetChildIndex(txtEndereco, 0);
             tabPageCadastro.Controls.SetChildIndex(txtBairro, 0);
             tabPageCadastro.Controls.SetChildIndex(cboCidade, 0);
+            tabPageCadastro.Controls.SetChildIndex(txtDocumento, 0);
+            // 
+            // tabPageConsulta
+            // 
+            tabPageConsulta.Margin = new Padding(3, 4, 3, 4);
+            tabPageConsulta.Padding = new Padding(3, 4, 3, 4);
             // 
             // cboCidade
             // 
@@ -70,11 +82,12 @@
             cboCidade.Hint = "Cidade";
             cboCidade.IntegralHeight = false;
             cboCidade.ItemHeight = 43;
-            cboCidade.Location = new Point(42, 246);
+            cboCidade.Location = new Point(48, 313);
+            cboCidade.Margin = new Padding(3, 4, 3, 4);
             cboCidade.MaxDropDownItems = 4;
             cboCidade.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             cboCidade.Name = "cboCidade";
-            cboCidade.Size = new Size(725, 49);
+            cboCidade.Size = new Size(828, 49);
             cboCidade.StartIndex = 0;
             cboCidade.TabIndex = 9;
             // 
@@ -90,7 +103,8 @@
             txtBairro.HideSelection = true;
             txtBairro.Hint = "Bairro";
             txtBairro.LeadingIcon = null;
-            txtBairro.Location = new Point(42, 173);
+            txtBairro.Location = new Point(48, 239);
+            txtBairro.Margin = new Padding(3, 4, 3, 4);
             txtBairro.MaxLength = 32767;
             txtBairro.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtBairro.Name = "txtBairro";
@@ -102,7 +116,7 @@
             txtBairro.SelectionLength = 0;
             txtBairro.SelectionStart = 0;
             txtBairro.ShortcutsEnabled = true;
-            txtBairro.Size = new Size(725, 48);
+            txtBairro.Size = new Size(829, 48);
             txtBairro.TabIndex = 8;
             txtBairro.TabStop = false;
             txtBairro.TextAlign = HorizontalAlignment.Left;
@@ -121,7 +135,8 @@
             txtEndereco.HideSelection = true;
             txtEndereco.Hint = "Endereço";
             txtEndereco.LeadingIcon = null;
-            txtEndereco.Location = new Point(42, 97);
+            txtEndereco.Location = new Point(49, 169);
+            txtEndereco.Margin = new Padding(3, 4, 3, 4);
             txtEndereco.MaxLength = 32767;
             txtEndereco.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtEndereco.Name = "txtEndereco";
@@ -133,7 +148,7 @@
             txtEndereco.SelectionLength = 0;
             txtEndereco.SelectionStart = 0;
             txtEndereco.ShortcutsEnabled = true;
-            txtEndereco.Size = new Size(725, 48);
+            txtEndereco.Size = new Size(828, 48);
             txtEndereco.TabIndex = 7;
             txtEndereco.TabStop = false;
             txtEndereco.TextAlign = HorizontalAlignment.Left;
@@ -152,7 +167,8 @@
             txtId.HideSelection = true;
             txtId.Hint = "Id";
             txtId.LeadingIcon = null;
-            txtId.Location = new Point(612, 21);
+            txtId.Location = new Point(48, 28);
+            txtId.Margin = new Padding(3, 4, 3, 4);
             txtId.MaxLength = 32767;
             txtId.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtId.Name = "txtId";
@@ -164,7 +180,7 @@
             txtId.SelectionLength = 0;
             txtId.SelectionStart = 0;
             txtId.ShortcutsEnabled = true;
-            txtId.Size = new Size(155, 48);
+            txtId.Size = new Size(177, 48);
             txtId.TabIndex = 6;
             txtId.TabStop = false;
             txtId.TextAlign = HorizontalAlignment.Left;
@@ -183,7 +199,8 @@
             txtNome.HideSelection = true;
             txtNome.Hint = "Nome";
             txtNome.LeadingIcon = null;
-            txtNome.Location = new Point(42, 21);
+            txtNome.Location = new Point(247, 28);
+            txtNome.Margin = new Padding(3, 4, 3, 4);
             txtNome.MaxLength = 32767;
             txtNome.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtNome.Name = "txtNome";
@@ -195,19 +212,53 @@
             txtNome.SelectionLength = 0;
             txtNome.SelectionStart = 0;
             txtNome.ShortcutsEnabled = true;
-            txtNome.Size = new Size(564, 48);
+            txtNome.Size = new Size(629, 48);
             txtNome.TabIndex = 5;
             txtNome.TabStop = false;
             txtNome.TextAlign = HorizontalAlignment.Left;
             txtNome.TrailingIcon = null;
             txtNome.UseSystemPasswordChar = false;
             // 
+            // txtDocumento
+            // 
+            txtDocumento.AnimateReadOnly = false;
+            txtDocumento.AutoCompleteMode = AutoCompleteMode.None;
+            txtDocumento.AutoCompleteSource = AutoCompleteSource.None;
+            txtDocumento.BackgroundImageLayout = ImageLayout.None;
+            txtDocumento.CharacterCasing = CharacterCasing.Normal;
+            txtDocumento.Depth = 0;
+            txtDocumento.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtDocumento.HideSelection = true;
+            txtDocumento.Hint = "Documento";
+            txtDocumento.LeadingIcon = null;
+            txtDocumento.Location = new Point(49, 100);
+            txtDocumento.Margin = new Padding(3, 4, 3, 4);
+            txtDocumento.MaxLength = 32767;
+            txtDocumento.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            txtDocumento.Name = "txtDocumento";
+            txtDocumento.PasswordChar = '\0';
+            txtDocumento.PrefixSuffixText = null;
+            txtDocumento.ReadOnly = false;
+            txtDocumento.RightToLeft = RightToLeft.No;
+            txtDocumento.SelectedText = "";
+            txtDocumento.SelectionLength = 0;
+            txtDocumento.SelectionStart = 0;
+            txtDocumento.ShortcutsEnabled = true;
+            txtDocumento.Size = new Size(829, 48);
+            txtDocumento.TabIndex = 10;
+            txtDocumento.TabStop = false;
+            txtDocumento.TextAlign = HorizontalAlignment.Left;
+            txtDocumento.TrailingIcon = null;
+            txtDocumento.UseSystemPasswordChar = false;
+            // 
             // CadastroCliente
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 544);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "CadastroCliente";
+            Padding = new Padding(3, 85, 3, 4);
             Text = "Cadastro de Clientes";
             tabControlCadastro.ResumeLayout(false);
             tabPageCadastro.ResumeLayout(false);
@@ -221,5 +272,6 @@
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtEndereco;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtId;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtNome;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit txtDocumento;
     }
 }

@@ -1,4 +1,5 @@
-﻿using IFSPStore.Domain.Base;
+﻿using IFSPStore.app.Models;
+using IFSPStore.Domain.Base;
 using IFSPStore.Domain.Entities;
 using IFSPStore.Service.Validators;
 
@@ -8,31 +9,42 @@ namespace IFSPStore.app.Base
 
     public partial class CadastroCliente : CadastroBase
     {
-        #region Declarações
-        private readonly IBaseService<Cliente> _clienteService;
-        private List<Cliente>? clientes;
-        #endregion
 
-        #region Construtor
-        public CadastroCliente(IBaseService<Cliente> clienteService)
+        private readonly IBaseService<Cliente> _clienteService;
+        private readonly IBaseService<Cidade> _cidadeService;
+
+        private List<ClienteModel>? clientes;
+
+        public CadastroCliente(IBaseService<Cliente> clienteService, IBaseService<Cidade> cidadeService)
         {
             _clienteService = clienteService;
+            _cidadeService = cidadeService;
+
             InitializeComponent();
+            CarregarCombo();
         }
 
-        #endregion
+        private void CarregarCombo()
+        {
+            cboCidade.ValueMember = "Id";
+            cboCidade.DisplayMember = "NomeEstado";
+            cboCidade.DataSource = _cidadeService.Get<CidadeModel>().ToList();
+        }
 
-        #region Métodos
+
         private void PreencheObjeto(Cliente cliente)
         {
             cliente.Nome = txtNome.Text;
             cliente.Endereco = txtEndereco.Text;
             cliente.Bairro = txtBairro.Text;
-            //cliente.Cidade.Nome = cbCidade.Text;
+            cliente.Documento = txtDocumento.Text;
+            if (int.TryParse(cboCidade.SelectedValue.ToString(), out var idGrupo))
+            {
+                var cidade = _cidadeService.GetById<Cidade>(idGrupo);
+                cliente.Cidade = cidade;
+            }
         }
-        #endregion
 
-        #region Eventos CRUD
         protected override void Salvar()
         {
             try
@@ -74,19 +86,22 @@ namespace IFSPStore.app.Base
 
         protected override void CarregaGrid()
         {
-            clientes = _clienteService.Get<Cliente>().ToList();
+            clientes = _clienteService.Get<ClienteModel>(new[] { "Cidade" }).ToList();
             dataGridViewConsulta.DataSource = clientes;
-            dataGridViewConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewConsulta.Columns["IdCidade"]!.Visible = false;
         }
 
         protected override void CarregaRegistro(DataGridViewRow? linha)
         {
             txtId.Text = linha?.Cells["Id"].Value.ToString();
             txtNome.Text = linha?.Cells["Nome"].Value.ToString();
-            txtEndereco.Text = linha?.Cells["Endereço"].Value.ToString();
+            txtEndereco.Text = linha?.Cells["Endereco"].Value.ToString();
             txtBairro.Text = linha?.Cells["Bairro"].Value.ToString();
-            cboCidade.Text = linha?.Cells["Cidade"].Value.ToString();
+            cboCidade.SelectedValue = linha?.Cells["IdCidade"].Value;
+
         }
-        #endregion
+
+
     }
 }

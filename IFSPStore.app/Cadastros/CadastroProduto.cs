@@ -1,4 +1,5 @@
 ﻿
+using IFSPStore.app.Models;
 using IFSPStore.Domain.Base;
 using IFSPStore.Domain.Entities;
 using IFSPStore.Service.Validators;
@@ -7,20 +8,17 @@ namespace IFSPStore.app.Base
 {
     public partial class CadastroProduto : CadastroBase
     {
-        #region Declarações
+        
         private readonly IBaseService<Produto> _produtoService;
+        //private IBaseService<GrupoModel> _grupoService;
         private List<Produto>? produtos;
-        #endregion
-
-        #region Construtor
-        public CadastroProduto(IBaseService<Produto> produtoService)
+        
+        public CadastroProduto(IBaseService<Produto> produtoService, IBaseService<Grupo> grupoService)
         {
             _produtoService = produtoService;
             InitializeComponent();
         }
-        #endregion
-
-        #region Método
+        
         private void PreencheObjeto(Produto produto)
         {
             produto.Nome = txtNome.Text;
@@ -29,9 +27,7 @@ namespace IFSPStore.app.Base
             produto.DataCompra = DateTime.Parse(txtDataCompra.Text);
             //produto.Grupo.Nome = cbGrupo.Text;
         }
-        #endregion
-
-        #region Eventos CRUD
+        
         protected override void Salvar()
         {
             try
@@ -71,11 +67,18 @@ namespace IFSPStore.app.Base
             }
         }
 
+        private void CarregarCombo()
+        {
+            cboGrupo.ValueMember = "Id";
+            cboGrupo.DisplayMember = "NomeEstado";
+            cboGrupo.DataSource = _grupoService.Get<GrupoModel>().ToList();
+        }
+
         protected override void CarregaGrid()
         {
             produtos = _produtoService.Get<Produto>().ToList();
             dataGridViewConsulta.DataSource = produtos;
-            dataGridViewConsulta.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewConsulta.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         protected override void CarregaRegistro(DataGridViewRow? linha)
@@ -87,6 +90,5 @@ namespace IFSPStore.app.Base
             txtDataCompra.Text = linha?.Cells["Data Compra"].Value.ToString();
             cboGrupo.Text = linha?.Cells["Grupo"].Value.ToString();
         }
-        #endregion
     }
 }

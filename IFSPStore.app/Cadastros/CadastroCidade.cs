@@ -7,28 +7,23 @@ namespace IFSPStore.app.Cadastros
 {
     public partial class CadastroCidade : CadastroBase
     {
-        #region Declaração
+
         private readonly IBaseService<Cidade> _cidadeService;
         private List<Cidade>? cidades;
-        #endregion
 
-        #region Construtor
 
         public CadastroCidade(IBaseService<Cidade> cidadeService)
         {
             _cidadeService = cidadeService;
             InitializeComponent();
         }
-        #endregion
-        #region Métodos
+
         private void PreencheObjeto(Cidade cidade)
         {
             cidade.Nome = txtNome.Text;
             cidade.Estado = cboEstado.Text;
         }
-        #endregion
 
-        #region Eventos CRUD
         protected override void Salvar()
         {
             try
@@ -72,7 +67,7 @@ namespace IFSPStore.app.Cadastros
         {
             cidades = _cidadeService.Get<Cidade>().ToList();
             dataGridViewConsulta.DataSource = cidades;
-            dataGridViewConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         protected override void CarregaRegistro(DataGridViewRow? linha)
@@ -81,7 +76,6 @@ namespace IFSPStore.app.Cadastros
             txtNome.Text = linha?.Cells["Nome"].Value.ToString();
             cboEstado.Text = linha?.Cells["Estado"].Value.ToString();
         }
-        #endregion
     }
 }
 
