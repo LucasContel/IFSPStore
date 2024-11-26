@@ -145,6 +145,7 @@
             MainMenuStrip = menuStrip1;
             Name = "FormPrincipal";
             Text = "Sistema IFSP Store";
+            FormClosing += FormPrincipal_FormClosing;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
