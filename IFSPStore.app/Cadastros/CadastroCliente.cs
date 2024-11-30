@@ -2,6 +2,7 @@
 using IFSPStore.Domain.Base;
 using IFSPStore.Domain.Entities;
 using IFSPStore.Service.Validators;
+using ReaLTaiizor.Controls;
 
 namespace IFSPStore.app.Base
 {
@@ -38,6 +39,8 @@ namespace IFSPStore.app.Base
             cliente.Endereco = txtEndereco.Text;
             cliente.Bairro = txtBairro.Text;
             cliente.Documento = txtDocumento.Text;
+
+
             if (int.TryParse(cboCidade.SelectedValue.ToString(), out var idGrupo))
             {
                 var cidade = _cidadeService.GetById<Cidade>(idGrupo);
@@ -55,7 +58,7 @@ namespace IFSPStore.app.Base
                     {
                         var cliente = _clienteService.GetById<Cliente>(id);
                         PreencheObjeto(cliente);
-                        cliente = _clienteService.Update<Cliente, Cliente, ClienteValidator>(cliente);
+                        _clienteService.Update<Cliente, Cliente, ClienteValidator>(cliente);
                     }
                 }
                 else
@@ -64,6 +67,7 @@ namespace IFSPStore.app.Base
                     PreencheObjeto(cliente);
                     _clienteService.Add<Cliente, Cliente, ClienteValidator>(cliente);
                 }
+
                 tabControlCadastro.SelectedIndex = 1;
             }
             catch (Exception ex)

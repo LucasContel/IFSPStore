@@ -37,27 +37,36 @@
             // 
             // tabControlCadastro
             // 
-            tabControlCadastro.Location = new Point(3, 48);
-            tabControlCadastro.Margin = new Padding(3, 4, 3, 4);
-            tabControlCadastro.Size = new Size(840, 400);
+            tabControlCadastro.Location = new Point(3, 36);
+            tabControlCadastro.Margin = new Padding(3);
+            tabControlCadastro.Size = new Size(734, 300);
             // 
             // tabPageCadastro
             // 
             tabPageCadastro.Controls.Add(txtId);
             tabPageCadastro.Controls.Add(cboEstado);
             tabPageCadastro.Controls.Add(txtNome);
-            tabPageCadastro.Margin = new Padding(3, 4, 3, 4);
-            tabPageCadastro.Padding = new Padding(3, 4, 3, 4);
-            tabPageCadastro.Size = new Size(832, 365);
+            tabPageCadastro.Margin = new Padding(3);
+            tabPageCadastro.Padding = new Padding(3);
+            tabPageCadastro.Size = new Size(726, 265);
+            tabPageCadastro.Controls.SetChildIndex(btnSalvar, 0);
+            tabPageCadastro.Controls.SetChildIndex(btnCancelar, 0);
             tabPageCadastro.Controls.SetChildIndex(txtNome, 0);
             tabPageCadastro.Controls.SetChildIndex(cboEstado, 0);
             tabPageCadastro.Controls.SetChildIndex(txtId, 0);
             // 
             // tabPageConsulta
             // 
-            tabPageConsulta.Margin = new Padding(3, 4, 3, 4);
-            tabPageConsulta.Padding = new Padding(3, 4, 3, 4);
-            tabPageConsulta.Size = new Size(786, 349);
+            tabPageConsulta.Margin = new Padding(3);
+            tabPageConsulta.Padding = new Padding(3);
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(487, 215);
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.Location = new Point(580, 215);
             // 
             // txtNome
             // 
@@ -71,7 +80,8 @@
             txtNome.HideSelection = true;
             txtNome.Hint = "Nome";
             txtNome.LeadingIcon = null;
-            txtNome.Location = new Point(167, 75);
+            txtNome.Location = new Point(146, 56);
+            txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.MaxLength = 32767;
             txtNome.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtNome.Name = "txtNome";
@@ -83,7 +93,7 @@
             txtNome.SelectionLength = 0;
             txtNome.SelectionStart = 0;
             txtNome.ShortcutsEnabled = true;
-            txtNome.Size = new Size(415, 48);
+            txtNome.Size = new Size(363, 48);
             txtNome.TabIndex = 2;
             txtNome.TabStop = false;
             txtNome.TextAlign = HorizontalAlignment.Left;
@@ -106,11 +116,12 @@
             cboEstado.IntegralHeight = false;
             cboEstado.ItemHeight = 43;
             cboEstado.Items.AddRange(new object[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" });
-            cboEstado.Location = new Point(607, 75);
+            cboEstado.Location = new Point(531, 56);
+            cboEstado.Margin = new Padding(3, 2, 3, 2);
             cboEstado.MaxDropDownItems = 4;
             cboEstado.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             cboEstado.Name = "cboEstado";
-            cboEstado.Size = new Size(151, 49);
+            cboEstado.Size = new Size(133, 49);
             cboEstado.StartIndex = 0;
             cboEstado.TabIndex = 3;
             // 
@@ -126,7 +137,8 @@
             txtId.HideSelection = true;
             txtId.Hint = "Id";
             txtId.LeadingIcon = null;
-            txtId.Location = new Point(18, 75);
+            txtId.Location = new Point(16, 56);
+            txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.MaxLength = 32767;
             txtId.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtId.Name = "txtId";
@@ -138,7 +150,7 @@
             txtId.SelectionLength = 0;
             txtId.SelectionStart = 0;
             txtId.ShortcutsEnabled = true;
-            txtId.Size = new Size(125, 48);
+            txtId.Size = new Size(109, 48);
             txtId.TabIndex = 4;
             txtId.TabStop = false;
             txtId.TextAlign = HorizontalAlignment.Left;
@@ -147,12 +159,12 @@
             // 
             // CadastroCidade
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(846, 451);
-            Margin = new Padding(3, 4, 3, 4);
+            ClientSize = new Size(740, 338);
+            Margin = new Padding(3);
             Name = "CadastroCidade";
-            Padding = new Padding(3, 48, 3, 3);
+            Padding = new Padding(3, 36, 3, 2);
             Text = "CadastroCidade";
             tabControlCadastro.ResumeLayout(false);
             tabPageCadastro.ResumeLayout(false);

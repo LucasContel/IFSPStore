@@ -36,15 +36,25 @@
             // 
             // tabControlCadastro
             // 
-            tabControlCadastro.Size = new Size(794, 236);
+            tabControlCadastro.Size = new Size(832, 231);
             // 
             // tabPageCadastro
             // 
             tabPageCadastro.Controls.Add(txtId);
             tabPageCadastro.Controls.Add(txtNome);
-            tabPageCadastro.Size = new Size(786, 201);
+            tabPageCadastro.Size = new Size(824, 196);
+            tabPageCadastro.Controls.SetChildIndex(btnSalvar, 0);
+            tabPageCadastro.Controls.SetChildIndex(btnCancelar, 0);
             tabPageCadastro.Controls.SetChildIndex(txtNome, 0);
             tabPageCadastro.Controls.SetChildIndex(txtId, 0);
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(590, 143);
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.Location = new Point(683, 143);
             // 
             // txtId
             // 
@@ -112,7 +122,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 286);
+            ClientSize = new Size(838, 281);
             Name = "CadastroGrupo";
             Text = "Cadastro de Grupos";
             tabControlCadastro.ResumeLayout(false);

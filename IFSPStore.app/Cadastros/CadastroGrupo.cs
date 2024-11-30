@@ -8,7 +8,7 @@ namespace IFSPStore.app.Base
     {
         
         private readonly IBaseService<Grupo> _grupoService;
-        private List<Grupo> grupos;
+        private List<Grupo>? grupos;
         
         public CadastroGrupo(IBaseService<Grupo> grupoService)
         {

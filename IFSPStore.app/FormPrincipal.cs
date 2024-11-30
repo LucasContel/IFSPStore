@@ -23,9 +23,30 @@ namespace IFSPStore.app
             ExibeFormulario<CadastroCliente>();
         }
 
+
+        private void vendasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExibeFormulario<CadastroVenda>();
+        }
+
+        private void grupoDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExibeFormulario<CadastroGrupo>();
+        }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExibeFormulario<CadastroProduto>();
+        }
+
+        private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExibeFormulario<CadastroUsuario>();
+        }
+
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(e.CloseReason == CloseReason.ApplicationExitCall)
+            if (e.CloseReason == CloseReason.ApplicationExitCall)
             {
                 e.Cancel = true;
             }

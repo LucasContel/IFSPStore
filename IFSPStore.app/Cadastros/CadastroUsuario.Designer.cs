@@ -42,7 +42,7 @@
             // 
             // tabControlCadastro
             // 
-            tabControlCadastro.Size = new Size(794, 400);
+            tabControlCadastro.Size = new Size(699, 400);
             // 
             // tabPageCadastro
             // 
@@ -54,7 +54,9 @@
             tabPageCadastro.Controls.Add(txtLogin);
             tabPageCadastro.Controls.Add(txtId);
             tabPageCadastro.Controls.Add(txtNome);
-            tabPageCadastro.Size = new Size(786, 365);
+            tabPageCadastro.Size = new Size(691, 365);
+            tabPageCadastro.Controls.SetChildIndex(btnSalvar, 0);
+            tabPageCadastro.Controls.SetChildIndex(btnCancelar, 0);
             tabPageCadastro.Controls.SetChildIndex(txtNome, 0);
             tabPageCadastro.Controls.SetChildIndex(txtId, 0);
             tabPageCadastro.Controls.SetChildIndex(txtLogin, 0);
@@ -63,6 +65,14 @@
             tabPageCadastro.Controls.SetChildIndex(ckbxAtivo, 0);
             tabPageCadastro.Controls.SetChildIndex(txtDataCadastro, 0);
             tabPageCadastro.Controls.SetChildIndex(txtDataLogin, 0);
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(455, 317);
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.Location = new Point(548, 317);
             // 
             // txtNome
             // 
@@ -302,7 +312,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(705, 450);
             Name = "CadastroUsuario";
             Text = "Cadastro de Usuários";
             tabControlCadastro.ResumeLayout(false);

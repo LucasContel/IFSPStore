@@ -2,6 +2,7 @@
 using IFSPStore.Domain.Base;
 using IFSPStore.Domain.Entities;
 using IFSPStore.Service.Validators;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace IFSPStore.app.Base
 {
@@ -22,8 +23,6 @@ namespace IFSPStore.app.Base
             usuario.Login = txtLogin.Text;
             usuario.Senha = txtSenha.Text;
             usuario.Email = txtEmail.Text;
-            usuario.DataCadastro = DateTime.Parse(txtDataCadastro.Text);
-            usuario.DataLogin = DateTime.Parse(txtDataLogin.Text);
             usuario.Ativo = ckbxAtivo.Checked;
         }
 
@@ -71,6 +70,7 @@ namespace IFSPStore.app.Base
         {
             usuarios = _usuarioService.Get<Usuario>().ToList();
             dataGridViewConsulta.DataSource = usuarios;
+            dataGridViewConsulta.Columns["Senha"]!.Visible = false;
             dataGridViewConsulta.Columns["Nome"]!.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
@@ -81,17 +81,14 @@ namespace IFSPStore.app.Base
             txtLogin.Text = linha?.Cells["Login"].Value.ToString();
             txtEmail.Text = linha?.Cells["Email"].Value.ToString();
             txtSenha.Text = linha?.Cells["Senha"].Value.ToString();
-            txtDataCadastro.Text = linha?.Cells["Data Cadastro"].Value.ToString();
-            txtDataLogin.Text = linha?.Cells["DataLogin"].Value.ToString();
-            var sAtivo = linha?.Cells["Ativo"].Value.ToString();
-            if (sAtivo is "true")
-            {
-                ckbxAtivo.Checked = true;
-            }
-            else
-            {
-                ckbxAtivo.Checked = false;
-            }
+            ckbxAtivo.Checked = (bool)(linha?.Cells["Ativo"].Value ?? false);
+            txtDataCadastro.Text = DateTime.TryParse(linha?.Cells["DataCadastro"].Value.ToString(), out var dataC)
+                ? dataC.ToString("g")
+                : "";
+
+            txtDataLogin.Text = DateTime.TryParse(linha?.Cells["DataLogin"].Value.ToString(), out var dataL)
+                ? dataL.ToString("g")
+                : "";
         }
 
     }
