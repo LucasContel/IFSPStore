@@ -3,6 +3,7 @@ using AutoMapper;
 using IFSPStore.app.Base;
 using IFSPStore.app.Cadastros;
 using IFSPStore.app.Models;
+using IFSPStore.app.Outros;
 using IFSPStore.Domain.Base;
 using IFSPStore.Domain.Entities;
 using IFSPStore.Repository.Context;
@@ -63,6 +64,7 @@ namespace IFSPStore.app.Infra
             Services.AddTransient<CadastroProduto, CadastroProduto>();
             Services.AddTransient<CadastroUsuario, CadastroUsuario>();
             Services.AddTransient<CadastroVenda, CadastroVenda>();
+            Services.AddTransient<Login, Login>();
 
             #endregion
 

@@ -1,6 +1,8 @@
 using IFSPStore.app.Base;
 using IFSPStore.app.Cadastros;
 using IFSPStore.app.Infra;
+using IFSPStore.app.Outros;
+using IFSPStore.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using ReaLTaiizor.Forms;
 
@@ -8,9 +10,29 @@ namespace IFSPStore.app
 {
     public partial class FormPrincipal : MaterialForm
     {
+
+        public static Usuario Usuario { get; set; }
+
         public FormPrincipal()
         {
             InitializeComponent();
+            CarregaLogin();
+        }
+
+        private void CarregaLogin()
+        {
+            var login = ConfigureDI.ServicesProvider!.GetService<Login>();
+            if (login != null)
+            {
+                if (login.ShowDialog() != DialogResult.OK)
+                {
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    lblUsuario.Text = $"Usuário: {Usuario.Nome}";
+                }
+            }
         }
 
         private void cidadesToolStripMenuItem_Click(object sender, EventArgs e)

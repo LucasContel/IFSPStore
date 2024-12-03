@@ -18,11 +18,11 @@ namespace IFSPStore.Service.Validators
                 .EmailAddress().WithMessage("E-mail inválido.");
 
             RuleFor(c => c.Senha)
-                .MinimumLength(8).WithMessage("Senha deve ter no mínimo 8 digitos.")
-                .MaximumLength(20).WithMessage("Senha deve ter no máximo 20 digitos.")
-                .Matches(@"[A-Z]+").WithMessage("Sua senha deve conter pelo menos uma letra maiuscula.")
-                .Matches(@"[a-z]+").WithMessage("Sua senha deve conter pelo menos uma letra minuscula.")
-                .Matches(@"[0-9]+").WithMessage("Sua senha deve conter pelo menos um número.")
+                //.MinimumLength(8).WithMessage("Senha deve ter no mínimo 8 digitos.")
+                //.MaximumLength(20).WithMessage("Senha deve ter no máximo 20 digitos.")
+                //.Matches(@"[A-Z]+").WithMessage("Sua senha deve conter pelo menos uma letra maiuscula.")
+                //.Matches(@"[a-z]+").WithMessage("Sua senha deve conter pelo menos uma letra minuscula.")
+                //.Matches(@"[0-9]+").WithMessage("Sua senha deve conter pelo menos um número.")
                 .NotEmpty().WithMessage("Por favor informe a senha.")
                 .NotNull().WithMessage("Por favor informe a senha.");
         }
