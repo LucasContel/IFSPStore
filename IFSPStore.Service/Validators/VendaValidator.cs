@@ -11,10 +11,6 @@ namespace IFSPStore.Service.Validators
                 .NotEmpty().WithMessage("Por favor informe a data.")
                 .NotNull().WithMessage("Por favor informe a data.");
 
-            RuleFor(c => c.ValorTotal)
-                .NotEmpty().WithMessage("Por favor informe o valor total.")
-                .NotNull().WithMessage("Por favor informe o valor total.");
-
         }
     }
 

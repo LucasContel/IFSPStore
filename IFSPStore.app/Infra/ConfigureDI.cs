@@ -86,7 +86,16 @@ namespace IFSPStore.app.Infra
                 .ForMember(c => c.IdGrupo, c => c.MapFrom(x => x.Grupo!.Id));
 
                 config.CreateMap<Usuario, UsuarioModel>();
-                
+
+                config.CreateMap<Venda, VendaModel>()
+                .ForMember(d => d.IdCliente, d => d.MapFrom(x => x.Cliente!.Id))
+                .ForMember(d => d.Cliente, d => d.MapFrom(x => x.Cliente!.Nome))
+                .ForMember(d => d.IdUsuario, d => d.MapFrom(x => x.Usuario!.Id))
+                .ForMember(d => d.Usuario, d => d.MapFrom(x => x.Usuario!.Nome));
+
+                config.CreateMap<VendaItem, VendaItemModel>()
+                .ForMember(d => d.IdProduto, d => d.MapFrom(x => x.Produto!.Id))
+                .ForMember(d => d.Produto, d => d.MapFrom(x => x.Produto!.Nome));
 
             }).CreateMapper());
             #endregion
